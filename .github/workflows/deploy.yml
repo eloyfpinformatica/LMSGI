@@ -22,17 +22,12 @@ jobs:
         with:
           node-version: '18'
 
-      # Instala dependencias dentro de src/
       - name: Install dependencies
         run: npm install
-        working-directory: src
 
-      # Build del sitio VitePress desde src/
       - name: Build VitePress site
         run: npm run docs:build
-        working-directory: src
 
-      # Deploy a GitHub Pages desde la carpeta docs/ en la raíz
       - name: Deploy to GitHub Pages
         uses: peaceiris/actions-gh-pages@v4
         with:
