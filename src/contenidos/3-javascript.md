@@ -268,9 +268,9 @@ console.log(5 === '5'); // false (tipos diferentes: number vs string)
 
 ::: info  ✏️ **Para practicar:**  
 Crear un script que:
-1. Declare una constante para el nombre de un alumno y una variable `nota` (con un número).
-2. Use Template Literals para imprimir un mensaje en la consola con el nombre y la nota.
-3. Aplique una condición de control (`if/else`) para imprimir si el alumno está "Aprobado" (nota >= 5) o "Suspendido".
+1. Declara una constante para el nombre de un alumno y una variable `nota` (con un número).
+2. Usa Template Literals para imprimir un mensaje en la consola con el nombre y la nota.
+3. Aplica una condición de control (`if/else`) para imprimir si el alumno está "Aprobado" (nota >= 5) o "Suspendido".
 :::
 
 
