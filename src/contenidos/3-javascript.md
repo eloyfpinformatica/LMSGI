@@ -5235,9 +5235,13 @@ Es útil cuando necesitamos asegurarnos de que todos los elementos estén dispon
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
         }
-        .ocultar {
-            display: none;
+
+        #pantallaCarga.ocultar {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
         }
+
         #contenido {
             padding: 40px;
             font-family: Arial, sans-serif;
@@ -5253,9 +5257,9 @@ Es útil cuando necesitamos asegurarnos de que todos los elementos estén dispon
     <div id="contenido">
         <h1>Bienvenido a Mi Sitio Web</h1>
         <p>Este contenido se muestra después de cargar la página.</p>
-        <img src="https://via.placeholder.com/600x300" alt="Imagen de ejemplo">
-        <img src="https://via.placeholder.com/600x300" alt="Imagen de ejemplo">
-        <img src="https://via.placeholder.com/600x300" alt="Imagen de ejemplo">
+        <img src="https://picsum.photos/600/300?random=1" alt="Imagen de ejemplo">
+        <img src="https://picsum.photos/600/300?random=2" alt="Imagen de ejemplo">
+        <img src="https://picsum.photos/600/300?random=3" alt="Imagen de ejemplo">
     </div>
 
     <script>
@@ -5425,12 +5429,12 @@ Es útil cuando necesitamos asegurarnos de que todos los elementos estén dispon
 
     <script>
         let imagenesParaCargar = [
-            "https://via.placeholder.com/300x200/FF6B6B/FFFFFF?text=Imagen+1",
-            "https://via.placeholder.com/300x200/4ECDC4/FFFFFF?text=Imagen+2",
-            "https://via.placeholder.com/300x200/45B7D1/FFFFFF?text=Imagen+3",
-            "https://via.placeholder.com/300x200/FFA07A/FFFFFF?text=Imagen+4",
-            "https://via.placeholder.com/300x200/98D8C8/FFFFFF?text=Imagen+5",
-            "https://via.placeholder.com/300x200/F7DC6F/FFFFFF?text=Imagen+6"
+            "https://picsum.photos/600/300?random=1?text=Imagen+1",
+            "https://picsum.photos/600/300?random=2?text=Imagen+2",
+            "https://picsum.photos/600/300?random=3?text=Imagen+3",
+            "https://picsum.photos/600/300?random=4?text=Imagen+4",
+            "https://picsum.photos/600/300?random=5?text=Imagen+5",
+            "https://picsum.photos/600/300?random=6?text=Imagen+6",
         ];
         
         let imagenesCargadas = 0;

@@ -33,6 +33,7 @@ export default defineConfig({
                 { text: '1. Introducción', link: '/contenidos/1-introduccion' },
                 { text: '2. Diapositivas', link: '/contenidos/diapositivas' },
                 { text: '3. Manipulación de objectos con JavaScript', link: '/contenidos/3-javascript' },
+                { text: '4. Validación de documentos JSON y XML', link: '/contenidos/4-validacion' },
 
               ]
             },            
@@ -55,6 +56,7 @@ export default defineConfig({
             { text: '1. Introducción', link: '/contenidos/1-introduccion' },
             { text: '2. HTML y CSS', link: '/contenidos/2-htmlcss' },
             { text: '3. Manipulación de objectos con JavaScript', link: '/contenidos/3-javascript' },
+            { text: '4. Validación de documentos JSON y XML', link: '/contenidos/4-validacion' },
           ]
         },
        /* {
