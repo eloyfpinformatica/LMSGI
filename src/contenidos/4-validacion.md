@@ -2516,7 +2516,7 @@ Ahora abre el archivo `datos/productos.json` en VS Code y empieza a escribir:
 
 Cuando escribas `"` dentro del objeto, VS Code te mostrará automáticamente las propiedades disponibles:
 
-![Autocompletado](imagen-conceptual)
+
 
 - `id`
 - `nombre`
