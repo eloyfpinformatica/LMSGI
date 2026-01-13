@@ -2548,7 +2548,7 @@ Sugerencias:
 - `ropa`
 - `libros`
 
-**Funcionalidad 3: Detección de errores en tiempo real**
+**🎯 Funcionalidad 3: Detección de errores en tiempo real**
 
 Escribe un producto con errores:
 
