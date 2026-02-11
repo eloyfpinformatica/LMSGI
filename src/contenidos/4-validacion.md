@@ -2909,7 +2909,7 @@ Vamos a crear un ejemplo realista: validar un formulario de registro antes de en
 **Paso 2: Crear el validador (`validador.js`)**
 
 ```javascript
-const Ajv = require('ajv');
+const Ajv = require("ajv/dist/2020");
 const addFormats = require('ajv-formats');
 const fs = require('fs');
 
