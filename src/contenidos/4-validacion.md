@@ -3069,7 +3069,7 @@ Salida:
   - general: el campo aceptaTerminos es obligatorio
 ```
 
-#### Ejemplo en el navegador (HTML + JavaScript)
+#### Ejemplo en el navegador (HTML + JavaScript) [OPCIONAL]
 
 Ahora vamos a ver cómo validar en el frontend usando Ajv directamente en el navegador.
 
@@ -3630,7 +3630,9 @@ Herramienta que genera documentación HTML desde schemas.
 
 **Instalación:**
 ```bash
-pip install json-schema-for-humans
+sudo apt install pipx
+pipx ensurepath
+pipx install json-schema-for-humans
 ```
 
 **Uso:**
