@@ -24,20 +24,21 @@ export default defineConfig({
       themeConfig: {
         siteTitle: 'Apuntes LMSGI',
         outline: { label: 'En esta página' },
-          docFooter: { prev: 'Anterior', next: 'Siguiente' },
-          nav: [
-            { text: '🏠 Inicio', link: '/' },
-            { 
-              text: '📚 Contenidos', 
-              items: [
-                { text: '1. Introducción', link: '/contenidos/1-introduccion' },
-                { text: '2. Diapositivas', link: '/contenidos/diapositivas' },
-                { text: '3. Manipulación de objectos con JavaScript', link: '/contenidos/3-javascript' },
-                { text: '4. Validación de documentos JSON y XML', link: '/contenidos/4-validacion' },
+        docFooter: { prev: 'Anterior', next: 'Siguiente' },
+        nav: [
+          { text: '🏠 Inicio', link: '/' },
+          {
+            text: '📚 Contenidos',
+            items: [
+              { text: '1. Introducción', link: '/contenidos/1-introduccion' },
+              { text: '2. Diapositivas', link: '/contenidos/diapositivas' },
+              { text: '3. Manipulación de objectos con JavaScript', link: '/contenidos/3-javascript' },
+              { text: '4. Validación de documentos JSON y XML', link: '/contenidos/4-validacion' },
+              { text: '5. Intercambio de información mediante APIs', link: '/contenidos/5-apis' },
 
-              ]
-            },            
-          ],
+            ]
+          },
+        ],
       }
     },
   },
@@ -57,17 +58,18 @@ export default defineConfig({
             { text: '2. HTML y CSS', link: '/contenidos/2-htmlcss' },
             { text: '3. Manipulación de objectos con JavaScript', link: '/contenidos/3-javascript' },
             { text: '4. Validación de documentos JSON y XML', link: '/contenidos/4-validacion' },
+            { text: '5. Intercambio de información mediante APIs', link: '/contenidos/5-apis' },
           ]
         },
-       /* {
-              text: '🗂️ Ejercicios',
-              collapsed: true,
-              items: [
-                { text: 'Inicio', link: '/ejercicios/' },
-                { text: 'Ejercicio', link: '/ejercicios/ejercicio' },
-                { text: 'Final', link: '/ejercicios/final' }
-              ]
-            },*/
+        /* {
+               text: '🗂️ Ejercicios',
+               collapsed: true,
+               items: [
+                 { text: 'Inicio', link: '/ejercicios/' },
+                 { text: 'Ejercicio', link: '/ejercicios/ejercicio' },
+                 { text: 'Final', link: '/ejercicios/final' }
+               ]
+             },*/
         {
           items: [
             //{ text: '<img src="/LMSGI/img/logo-autor.png" class="logo-anim" style="vertical-align:middle; height:165px; margin:0 auto;">', link: '' },
@@ -79,7 +81,7 @@ export default defineConfig({
     },
     footer: {
       message: '<img src="/LMSGI/img/logo-autor.png" alt="Autor" style="height:75px; margin: 0 auto; display:block;" />',
-      copyright: 'Copyright © 2025'
+      copyright: 'CC BY-NC-SA - 2026'
     }
   }
 })

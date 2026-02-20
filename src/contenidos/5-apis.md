@@ -1,31 +1,20 @@
 # UNIDAD 5: Intercambio de Información mediante APIs
 
-**Lenguajes de Marcas y Sistemas de Gestión de la Información**  
-**Duración:** 20 sesiones
 
----
 
 ## Índice de Contenidos
 
-**1.** Introducción: El Intercambio de Información en la Web Moderna 
+**1.** [Introducción: El Intercambio de Información en la Web Moderna](#_1-introduccion-el-intercambio-de-informacion-en-la-web-moderna)  
+**2.** [Conceptos Fundamentales de APIs](#_2-conceptos-fundamentales-de-apis)  
+**3.** [Programación Asíncrona en JavaScript](#_3-programacion-asincrona-en-javascript)  
+**4.** [Consumo de APIs con Fetch](#_4-consumo-de-apis-con-fetch)  
+**5.** [Trabajo con Datos JSON](#_5-trabajo-con-datos-json)  
+**6.** [Herramientas de Desarrollo](#_6-herramientas-de-desarrollo)  
+**7.** [Proyectos Prácticos](#_7-proyectos-practicos)
+  - [Proyecto 1: Buscador de Películas](#🎬-proyecto-1-buscador-de-peliculas)
+  - [Proyecto 2: Dashboard Meteorológico](#🌤%EF%B8%8F-proyecto-2-dashboard-meteorologico)
+  - [Proyecto 3: Explorador de Museos y Arte](#🎨-proyecto-3-explorador-de-museos-y-arte)
 
-**2.** Conceptos Fundamentales de APIs
-
-**3.** Programación Asíncrona en JavaScript
-
-**4.** Consumo de APIs con Fetch
-
-**5.** Trabajo con Datos JSON
-
-**6.** Herramientas de Desarrollo
-
-**7.** Proyectos Prácticos **
-
-- Proyecto 1: Buscador de Películas
-- Proyecto 2: Dashboard Meteorológico
-- Proyecto 3: Explorador de Museos y Arte
-
----
 
 ## 1. Introducción: El Intercambio de Información en la Web Moderna
 
@@ -38,13 +27,14 @@ La web moderna no consiste solo en páginas estáticas. Las aplicaciones actuale
 - **Sincronizar datos** entre diferentes dispositivos
 - **Construir aplicaciones modulares** y escalables
 
-####  Ejemplo 
+#### Ejemplo
 
 Cuando abres Instagram, tu teléfono no descarga toda la aplicación de nuevo. Hace peticiones a los servidores de Instagram para obtener las nuevas publicaciones, comentarios y notificaciones. Esto es **intercambio de información mediante APIs**.
 
 ### 1.2. Ámbitos de aplicación en el desarrollo web
 
 **1. Integración de sistemas**
+
 - Conectar una tienda online con sistemas de pago (Stripe, PayPal)
 - Integrar servicios de envío y tracking
 - Sincronizar inventario con proveedores
@@ -55,11 +45,59 @@ Cuando abres Instagram, tu teléfono no descarga toda la aplicación de nuevo. H
 - Ofrecer servicios B2B (Business to Business)
 
 **3. Consumo de servicios**
+
 - Mostrar mapas de Google en tu sitio
 - Obtener datos meteorológicos actualizados
 - Consumir bases de datos públicas (películas, libros, etc.)
 
+### 1.3. Formatos de intercambio: JSON vs XML
+
+#### JSON (JavaScript Object Notation)
+
+- ✅ Formato ligero y fácil de leer
+- ✅ Nativo en JavaScript
+- ✅ Dominante en APIs REST modernas (>95%)
+- ✅ Menos verboso que XML
+
+```json
+{
+  "nombre": "Ana García",
+  "edad": 25,
+  "ciudad": "Madrid",
+  "intereses": ["programación", "diseño", "música"]
+}
+```
+
+#### XML (eXtensible Markup Language)
+
+- Más estructurado y estricto
+- Usado en sistemas legacy y SOAP
+- Soporta validación mediante esquemas (XSD)
+- Común en RSS/Atom feeds
+
+```xml
+<persona>
+  <nombre>Ana García</nombre>
+  <edad>25</edad>
+  <ciudad>Madrid</ciudad>
+  <intereses>
+    <interes>programación</interes>
+    <interes>diseño</interes>
+    <interes>música</interes>
+  </intereses>
+</persona>
+```
+
+> **📌 En esta unidad nos centraremos en JSON** — es el estándar de facto en las APIs REST modernas por su simplicidad, eficiencia y compatibilidad natural con JavaScript.
+
 ---
+
+### 📣 Ejemplo final
+[El Intercambio de Información en la Web Moderna](5.1_introduccion.md)
+
+---
+
+
 
 ## 2. Conceptos Fundamentales de APIs
 
@@ -100,6 +138,7 @@ https://api.ejemplo.com/productos?categoria=libros
 ```
 
 **Buenas prácticas:**
+
 - Usar sustantivos en plural (`/usuarios`, no `/usuario`)
 - Minúsculas y guiones (`/mis-pedidos`)
 - No incluir verbos en la URI (la acción la indica el método HTTP)
@@ -114,7 +153,7 @@ https://api.ejemplo.com/productos?categoria=libros
 | **PATCH** | Actualizar parcialmente un recurso | Cambiar solo el email |
 | **DELETE** | Eliminar un recurso | Borrar cuenta |
 
-### 5.2.4. Códigos de estado HTTP
+### 2.4. Códigos de estado HTTP
 
 | Código | Significado | Descripción |
 |--------|-------------|-------------|
@@ -134,12 +173,18 @@ https://api.ejemplo.com/productos?categoria=libros
 - 🟡 **4xx** — Error del cliente (tú hiciste algo mal)
 - 🔴 **5xx** — Error del servidor
 
+---
+
+### 📣 Ejemplo final
+[Conceptos APIS](5.2_conceptos_apis.md)
 
 ---
 
+
+
 ## 3. Programación Asíncrona en JavaScript
 
-> **⚠️ IMPORTANTE:** Esta es la parte más desafiante de la unidad. La programación asíncrona es fundamental para trabajar con APIs, ya que las peticiones HTTP toman tiempo en completarse.
+> **⚠️ IMPORTANTE:** Esta es la parte más conceptualmente desafiante de la unidad. La programación asíncrona es fundamental para trabajar con APIs, ya que las peticiones HTTP toman tiempo en completarse.
 
 ### 3.1. El problema de la asincronía
 
@@ -193,7 +238,7 @@ obtenerUsuario(userId, function(usuario) {
 
 **Problemas:** difícil de leer, difícil manejar errores, inmanejable a escala.
 
-### 5.3.3. Promesas: estados y métodos
+### 3.3. Promesas: estados y métodos
 
 Las **Promesas** (Promises) son la solución al callback hell. Representan un valor que puede estar disponible ahora, en el futuro, o nunca.
 
@@ -245,7 +290,7 @@ obtenerUsuario(userId)
   });
 ```
 
-### 5.3.4. async/await: sintaxis moderna
+### 3.4. async/await: sintaxis moderna
 
 **async/await** es azúcar sintáctico sobre las promesas que hace que el código asíncrono *parezca* síncrono, siendo mucho más legible.
 
@@ -303,7 +348,7 @@ async function demostracionAsync() {
 demostracionAsync();
 ```
 
-### 5.3.5. Manejo de errores con try/catch
+### 3.5. Manejo de errores con try/catch
 
 Con async/await usamos bloques **try/catch** para manejar errores, igual que con código síncrono.
 
@@ -353,14 +398,18 @@ async function cargarDatos() {
 }
 ```
 
+---
+
+### 📣 Ejemplo final
+[Asicronía: El problema](5.3A_asincronia_el_problema.md)
+
+[Asicronía: La solución](5.3B_asincronia_la_solucion.md)
 
 ---
 
-## 5.4. Consumo de APIs con Fetch
+## 4. Consumo de APIs con Fetch
 
-**⏱️ Duración:** 4 sesiones
-
-### 5.4.1. La API Fetch: sintaxis básica
+### 4.1. La API Fetch: sintaxis básica
 
 **`fetch()`** es la forma moderna de hacer peticiones HTTP en JavaScript. Reemplaza al antiguo `XMLHttpRequest`.
 
@@ -377,7 +426,7 @@ fetch(url, opciones)
 - ⚠️ La promesa se *cumple* incluso con códigos 404 o 500 — hay que comprobarlo manualmente
 - Solo se *rechaza* con errores de red
 
-### 5.4.2. Peticiones GET: obtener datos
+### 4.2. Peticiones GET: obtener datos
 
 #### Ejemplo 1: GET simple con comprobación de estado
 
@@ -471,7 +520,7 @@ async function mostrarUsuarios() {
 document.addEventListener('DOMContentLoaded', mostrarUsuarios);
 ```
 
-### 5.4.3. Peticiones POST, PUT, PATCH y DELETE
+### 4.3. Peticiones POST, PUT, PATCH y DELETE
 
 Para modificar datos en el servidor, especificamos el método y enviamos datos en el cuerpo de la petición.
 
@@ -543,7 +592,7 @@ async function eliminarPost(postId) {
 }
 ```
 
-### 5.4.4. Headers y autenticación
+### 4.4. Headers y autenticación
 
 Los **headers** son metadatos que enviamos con la petición.
 
@@ -597,7 +646,7 @@ if (response.status === 401) {
 > - ✅ Para proyectos de clase, usa APIs gratuitas con keys de prueba
 > - ✅ Guarda las keys en un archivo `config.js` excluido del repositorio (`.gitignore`)
 
-### 5.4.5. CORS: qué es y cómo afecta
+### 4.5. CORS: qué es y cómo afecta
 
 **CORS** (Cross-Origin Resource Sharing) es un mecanismo de seguridad del navegador que bloquea peticiones a dominios diferentes al de tu página.
 
@@ -631,7 +680,7 @@ Access to fetch at 'https://api.ejemplo.com' from origin
 - ✅ The Movie Database (TMDB)
 - ✅ OpenWeatherMap
 
-### 5.4.6. Rate limiting y buenas prácticas
+### 4.6. Rate limiting y buenas prácticas
 
 **Rate limiting** = límite en el número de peticiones que puedes hacer a una API en un período de tiempo (p.ej. 1000/día, 10/segundo).
 
@@ -711,14 +760,16 @@ async function cargarDatosDashboard() {
 }
 ```
 
+---
+
+### 📣 Ejemplo final
+[Consumo de APIS Fetch: PokéApi](5.4_consumo_apis_fetch.md)
 
 ---
 
-## 5.5. Trabajo con Datos JSON
+## 5. Trabajo con Datos JSON
 
-**⏱️ Duración:** 2 sesiones
-
-### 5.5.1. Procesamiento de respuestas JSON
+### 5.1. Procesamiento de respuestas JSON
 
 #### Conversión JSON ↔ JavaScript
 
@@ -790,7 +841,7 @@ console.log(primera);  // "Inception"
 console.log(resto);    // ["The Prestige", "Dunkirk"]
 ```
 
-### 5.5.2. Transformación de datos: map, filter, reduce
+### 5.2. Transformación de datos: map, filter, reduce
 
 #### map() — Transformar cada elemento
 
@@ -865,7 +916,7 @@ console.log(resultado);
 // ["Inception (2010)", "Interstellar (2014)"]
 ```
 
-### 5.5.3. Adaptación de estructuras JSON
+### 5.3. Adaptación de estructuras JSON
 
 A menudo los datos de la API tienen una estructura diferente a la que necesita nuestra aplicación. Es buena práctica crear funciones adaptadoras.
 
@@ -909,7 +960,7 @@ console.log(datos.peliculas[0].titulo); // "Inception"
 console.log(datos.peliculas[0].esClasico); // true
 ```
 
-### 5.5.4. Validación básica de datos
+### 5.4. Validación básica de datos
 
 ```javascript
 function validarPelicula(p) {
@@ -953,13 +1004,16 @@ async function obtenerPeliculasSeguro(url) {
 }
 ```
 
+
+
+### 📣 Ejemplo final
+[ Rick and Morty API](5.5_rick_morty.md)
+
 ---
 
-## 5.6. Herramientas de Desarrollo
+## 6. Herramientas de Desarrollo
 
-**⏱️ Duración:** 1 sesión
-
-### 5.6.1. Postman/Insomnia: testing de APIs
+### 6.1. Postman/Insomnia: testing de APIs
 
 **Postman** e **Insomnia** permiten probar APIs sin necesidad de escribir código. Son esenciales para:
 
@@ -994,7 +1048,7 @@ async function obtenerPeliculasSeguro(url) {
    - Pestaña "Headers" → ver headers de respuesta
 ```
 
-### 5.6.2. DevTools del navegador: Network y Console
+### 6.2. DevTools del navegador: Network y Console
 
 #### Pestaña Network (Red)
 
@@ -1042,9 +1096,11 @@ fetch('https://jsonplaceholder.typicode.com/users/1')
 
 ---
 
-## 5.7. Proyectos Prácticos
+### 📣 Ejemplo final
 
-**⏱️ Duración:** 6 sesiones (2 por proyecto)
+[ Herramientas](5.6_herramientas.md)
+
+## 7. Proyectos Prácticos
 
 Los tres proyectos son **independientes** pero aumentan progresivamente en complejidad. Cada uno trabaja con una API pública diferente y aplica todos los conceptos de la unidad.
 
@@ -1052,11 +1108,8 @@ Los tres proyectos son **independientes** pero aumentan progresivamente en compl
 
 ## 🎬 Proyecto 1: Buscador de Películas
 
-**⏱️ Duración:** 2 sesiones  
 **API:** The Movie Database (TMDB) — `https://www.themoviedb.org/`  
-**Nivel:** Básico-Intermedio
-
-### Descripción
+Descripción
 
 Aplicación web para buscar películas y ver las más populares. El usuario puede escribir en un buscador y ver resultados en tiempo real.
 
@@ -1217,7 +1270,7 @@ header h1 { font-size: 2.5rem; margin-bottom: 20px; }
 export const API_KEY    = 'TU_API_KEY_AQUI';
 export const BASE_URL   = 'https://api.themoviedb.org/3';
 export const IMAGE_URL  = 'https://image.tmdb.org/t/p/w500';
-export const NO_IMAGE   = 'https://via.placeholder.com/500x750?text=Sin+Imagen';
+export const NO_IMAGE   = 'https://placehold.co/500X750?text=Sin+imagen';
 ```
 
 **`js/api.js`**
@@ -1336,23 +1389,18 @@ loadMovies();
 
 ### Tareas
 
-**Sesión 1:**
 1. Crear la estructura del proyecto y obtener API key de TMDB
 2. Implementar `api.js` y probar las peticiones en consola
 3. Mostrar las películas populares en la página
-
-**Sesión 2:**
-1. Implementar el buscador con debounce
-2. Añadir estados de carga y error
-3. **Ampliación:** Añadir un modal con detalles completos al hacer clic en una tarjeta
+4. Implementar el buscador con debounce
+5.  Añadir estados de carga y error 
+6. **Ampliación:** Añadir un modal con detalles completos al hacer clic en una tarjeta
 
 ---
 
 ## 🌤️ Proyecto 2: Dashboard Meteorológico
 
-**⏱️ Duración:** 2 sesiones  
 **API:** OpenWeatherMap — `https://openweathermap.org/api`  
-**Nivel:** Intermedio
 
 ### Descripción
 
@@ -1752,23 +1800,19 @@ loadWeatherByLocation().catch(() => loadWeather('Madrid'));
 
 ### Tareas
 
-**Sesión 1:**
 1. Crear el proyecto y obtener API key de OpenWeatherMap
 2. Implementar la geolocalización y clima actual
 3. Mostrar los detalles del tiempo en el DOM
-
-**Sesión 2:**
-1. Implementar el pronóstico de 5 días
-2. Añadir la funcionalidad de favoritos con localStorage
-3. **Ampliación:** Implementar la conversión °C/°F
+4. Implementar el pronóstico de 5 días
+5. Añadir la funcionalidad de favoritos con localStorage
+6. **Ampliación:** Implementar la conversión °C/°F
 
 ---
 
 ## 🎨 Proyecto 3: Explorador de Museos y Arte
 
-**⏱️ Duración:** 2 sesiones  
 **API:** Metropolitan Museum of Art (gratuita, sin API Key) — `https://metmuseum.github.io/`  
-**Nivel:** Intermedio-Avanzado
+
 
 ### Descripción
 
@@ -2243,30 +2287,12 @@ search('impressionism'); // Búsqueda inicial para mostrar obras al cargar
 
 ### Tareas
 
-**Sesión 1:**
 1. Explorar la API del MET con Postman/DevTools
 2. Implementar la búsqueda y mostrar las tarjetas de obras
-3. Entender el patrón buscar-IDs → cargar-detalles con `Promise.all`
-
-**Sesión 2:**
-1. Implementar el modal de detalles
-2. Añadir feedback de carga y errores
-3. **Ampliación:** Añadir filtro por departamento usando el endpoint `/departments`
-
----
-
-## 📊 Resumen de distribución de sesiones
-
-| Sección | Sesiones | Contenido |
-|---------|----------|-----------|
-| 5.1. Introducción | 2 | JSON vs XML, ámbitos de aplicación |
-| 5.2. Conceptos de APIs | 2 | REST, HTTP verbs, códigos de estado |
-| 5.3. Programación asíncrona | 3 | Callbacks, Promesas, async/await |
-| 5.4. Fetch API | 4 | GET/POST/PUT/DELETE, headers, CORS |
-| 5.5. Trabajo con JSON | 2 | map/filter/reduce, adaptación |
-| 5.6. Herramientas | 1 | Postman, DevTools |
-| 5.7. Proyectos | 6 | Buscador de Películas, Clima, MET |
-| **Total** | **20** | |
+3. Entender el patrón buscar-IDs → cargar-detalles con `Promise.all
+4. Implementar el modal de detalles
+5. Añadir feedback de carga y errores
+6. **Ampliación:** Añadir filtro por departamento usando el endpoint `/departments`
 
 ---
 
@@ -2289,3 +2315,4 @@ search('impressionism'); // Búsqueda inicial para mostrar obras al cargar
 - [MDN - Promises](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Promise)
 - [MDN - async/await](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Statements/async_function)
 - [MDN - Array methods](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array)
+
