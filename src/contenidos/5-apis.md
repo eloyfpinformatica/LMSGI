@@ -88,14 +88,8 @@ Cuando abres Instagram, tu teléfono no descarga toda la aplicación de nuevo. H
 </persona>
 ```
 
-> **📌 En esta unidad nos centraremos en JSON** — es el estándar de facto en las APIs REST modernas por su simplicidad, eficiencia y compatibilidad natural con JavaScript.
-
----
-
-### 📣 Ejemplo final
-[El Intercambio de Información en la Web Moderna](5.1_introduccion.md)
-
----
+### 📣 Ejemplo
+[RestCountries](5.1_introduccion.md)
 
 
 
