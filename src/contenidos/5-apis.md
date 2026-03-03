@@ -180,7 +180,9 @@ https://api.ejemplo.com/productos?categoria=libros
 
 ## 3. Programación Asíncrona en JavaScript
 
-> **⚠️ IMPORTANTE:** Esta es la parte más conceptualmente desafiante de la unidad. La programación asíncrona es fundamental para trabajar con APIs, ya que las peticiones HTTP toman tiempo en completarse.
+::: info **Programación asíncrona** 
+Esta es la parte más conceptualmente desafiante de la unidad. La programación asíncrona es fundamental para trabajar con APIs, ya que las peticiones HTTP toman tiempo en completarse.
+:::
 
 ### 3.1. El problema de la asincronía
 
@@ -397,6 +399,7 @@ async function cargarDatos() {
 ---
 
 ### 📣 Ejemplo final
+
 [Asicronía: El problema](5.3A_asincronia_el_problema.md)
 
 [Asicronía: La solución](5.3B_asincronia_la_solucion.md)
