@@ -1,15 +1,15 @@
-# UNIDAD 5: Intercambio de Información mediante APIs
+# UNIDAD 5: Intercambio de nnformación mediante APIs
 
 
 
 ## Índice de Contenidos
 
-**1.** [Introducción: El Intercambio de Información en la Web Moderna](#_1-introduccion-el-intercambio-de-informacion-en-la-web-moderna)  
-**2.** [Conceptos Fundamentales de APIs](#_2-conceptos-fundamentales-de-apis)  
-**3.** [Programación Asíncrona en JavaScript](#_3-programacion-asincrona-en-javascript)  
+**1.** [Introducción: Intercambio de información en aplicaciones web](#_1-introduccion-el-intercambio-de-informacion-en-la-web-moderna)  
+**2.** [Conceptos fundamentales de APIs](#_2-conceptos-fundamentales-de-apis)  
+**3.** [Programación asíncrona en JavaScript](#_3-programacion-asincrona-en-javascript)  
 **4.** [Consumo de APIs con Fetch](#_4-consumo-de-apis-con-fetch)  
-**5.** [Trabajo con Datos JSON](#_5-trabajo-con-datos-json)  
-**6.** [Herramientas de Desarrollo](#_6-herramientas-de-desarrollo)  
+**5.** [Trabajo con datos JSON](#_5-trabajo-con-datos-json)  
+**6.** [Herramientas de desarrollo](#_6-herramientas-de-desarrollo)  
 **7.** [Proyectos Prácticos](#_7-proyectos-practicos)
   - [Proyecto 1: Buscador de Películas](#🎬-proyecto-1-buscador-de-peliculas)
   - [Proyecto 2: Dashboard Meteorológico](#🌤%EF%B8%8F-proyecto-2-dashboard-meteorologico)
@@ -116,7 +116,9 @@ Tú no entras directamente a la cocina a preparar tu comida. Le dices al camarer
 | **SOAP** | Protocolo formal, usa XML | Banca, sistemas legacy |
 | **GraphQL** | El cliente define qué datos quiere | Aplicaciones con datos complejos |
 
-> **📌 Nos centraremos en REST** por ser el más utilizado y el mejor punto de partida.
+::: tip **REST** 
+**Nos centraremos en REST** por ser el más utilizado y el mejor punto de partida.
+:::
 
 ### 2.3. Principios REST: Recursos, URIs y Verbos HTTP
 
