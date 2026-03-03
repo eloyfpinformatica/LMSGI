@@ -181,7 +181,7 @@ https://api.ejemplo.com/productos?categoria=libros
 ## 3. Programación Asíncrona en JavaScript
 
 ::: info **Programación asíncrona** 
-Esta es la parte más conceptualmente desafiante de la unidad. La programación asíncrona es fundamental para trabajar con APIs, ya que las peticiones HTTP toman tiempo en completarse.
+Esta es la parte más desafiante de la unidad. La programación asíncrona es fundamental para trabajar con APIs, ya que las peticiones HTTP toman tiempo en completarse.
 :::
 
 ### 3.1. El problema de la asincronía
