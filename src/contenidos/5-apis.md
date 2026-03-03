@@ -1,4 +1,4 @@
-# UNIDAD 5: Intercambio de nnformación mediante APIs
+# UNIDAD 5: Intercambio de información mediante APIs
 
 
 
@@ -404,7 +404,6 @@ async function cargarDatos() {
 
 [Asicronía: La solución](5.3B_asincronia_la_solucion.md)
 
----
 
 ## 4. Consumo de APIs con Fetch
 
@@ -640,10 +639,11 @@ if (response.status === 401) {
 }
 ```
 
-> **⚠️ IMPORTANTE — Seguridad de API Keys:**
-> - ❌ NUNCA subas tu API key a GitHub o repositorios públicos
-> - ✅ Para proyectos de clase, usa APIs gratuitas con keys de prueba
-> - ✅ Guarda las keys en un archivo `config.js` excluido del repositorio (`.gitignore`)
+::: tip **⚠️ IMPORTANTE — Seguridad de API Keys:**
+ - ❌ NUNCA subas tu API key a GitHub o repositorios públicos
+ - ✅ Para proyectos de clase, usa APIs gratuitas con keys de prueba
+ - ✅ Guarda las keys en un archivo `config.js` excluido del repositorio (`.gitignore`)
+:::
 
 ### 4.5. CORS: qué es y cómo afecta
 
@@ -762,9 +762,10 @@ async function cargarDatosDashboard() {
 ---
 
 ### 📣 Ejemplo final
+
 [Consumo de APIS Fetch: PokéApi](5.4_consumo_apis_fetch.md)
 
----
+
 
 ## 5. Trabajo con Datos JSON
 
@@ -1006,9 +1007,10 @@ async function obtenerPeliculasSeguro(url) {
 
 
 ### 📣 Ejemplo final
+
 [ Rick and Morty API](5.5_rick_morty.md)
 
----
+
 
 ## 6. Herramientas de Desarrollo
 
@@ -1103,7 +1105,6 @@ fetch('https://jsonplaceholder.typicode.com/users/1')
 
 Los tres proyectos son **independientes** pero aumentan progresivamente en complejidad. Cada uno trabaja con una API pública diferente y aplica todos los conceptos de la unidad.
 
----
 
 ## 🎬 Proyecto 1: Buscador de Películas
 
