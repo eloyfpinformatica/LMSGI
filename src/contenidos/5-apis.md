@@ -174,8 +174,6 @@ https://api.ejemplo.com/productos?categoria=libros
 ### 📣 Ejemplo final
 [Conceptos APIS](5.2_conceptos_apis.md)
 
----
-
 
 
 ## 3. Programación Asíncrona en JavaScript
