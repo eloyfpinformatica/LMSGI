@@ -725,6 +725,38 @@ document.getElementById('busqueda').addEventListener('input', (e) => {
 
 #### Cancelar peticiones obsoletas con AbortController
 
+Este patrón es fundamental en el desarrollo moderno de interfaces (como en buscadores con autocompletado). Sirve para evitar una **condición de carrera** (*race condition*): cuando una petición vieja tarda más que una nueva y sobreescribe los datos correctos.
+
+Cómo funciona paso a paso:
+
+**1. El Director de Orquesta: `AbortController`**
+
+Imagina que el `AbortController` es un interruptor. Este objeto tiene dos partes clave:
+
+* **`controlador.signal`**: Es una "antena" que le pasas a la función `fetch`. El fetch se queda escuchando esa señal.
+* **`controlador.abort()`**: Es el botón que, al presionarlo, envía una señal de "¡Detente!" a todos los fetch que tengan esa antena.
+
+**2. El flujo de ejecución**
+
+1. **Limpieza Previa:** Al inicio, el código revisa si ya existe un `controlador` de una búsqueda anterior. Si existe, llama a `.abort()`. Esto corta inmediatamente la conexión de red de la petición anterior.
+2. **Nueva Identidad:** Se crea un `new AbortController()` para la búsqueda actual y se guarda en la variable global/superior `controlador`.
+3. **Vinculación:** En el `fetch`, pasamos la propiedad `{ signal: controlador.signal }`. Ahora ese fetch está "bajo el control" de nuestro interruptor.
+4. **Gestión del "Error":** Cuando abortas un fetch, JavaScript lo lanza hacia el `catch`. Pero no es un error real de servidor, es una cancelación manual. Por eso el código pregunta: `if (error.name === 'AbortError')`.
+
+---
+
+**¿Por qué es tan útil?**
+
+Sin este código, si un usuario escribe muy rápido la palabra **"HOLA"**, se dispararían 4 peticiones:
+
+1. `buscar?q=H`
+2. `buscar?q=HO`
+3. `buscar?q=HOL`
+4. `buscar?q=HOLA`
+
+Si por un problema de red la petición de **"H"** tarda 5 segundos y la de **"HOLA"** tarda 1 segundo, el usuario vería primero los resultados de "HOLA" y, de repente, la pantalla cambiaría a los resultados de "H". **Con tu código, esto es imposible**, porque al dispararse la segunda, la primera muere.
+
+
 ```javascript
 let controlador = null;
 
@@ -737,7 +769,10 @@ async function buscarConCancelacion(termino) {
     const response = await fetch(`https://api.ejemplo.com/buscar?q=${termino}`, {
       signal: controlador.signal
     });
-    return await response.json();
+    datos = await response.json();
+    controlador = null;
+    return datos;
+
   } catch (error) {
     if (error.name === 'AbortError') {
       console.log('Búsqueda cancelada');
