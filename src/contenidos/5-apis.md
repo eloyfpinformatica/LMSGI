@@ -736,6 +736,7 @@ Imagina que el `AbortController` es un interruptor. Este objeto tiene dos partes
 * **`controlador.signal`**: Es una "antena" que le pasas a la función `fetch`. El fetch se queda escuchando esa señal.
 * **`controlador.abort()`**: Es el botón que, al presionarlo, envía una señal de "¡Detente!" a todos los fetch que tengan esa antena.
 
+
 **2. El flujo de ejecución**
 
 1. **Limpieza Previa:** Al inicio, el código revisa si ya existe un `controlador` de una búsqueda anterior. Si existe, llama a `.abort()`. Esto corta inmediatamente la conexión de red de la petición anterior.
@@ -743,7 +744,6 @@ Imagina que el `AbortController` es un interruptor. Este objeto tiene dos partes
 3. **Vinculación:** En el `fetch`, pasamos la propiedad `{ signal: controlador.signal }`. Ahora ese fetch está "bajo el control" de nuestro interruptor.
 4. **Gestión del "Error":** Cuando abortas un fetch, JavaScript lo lanza hacia el `catch`. Pero no es un error real de servidor, es una cancelación manual. Por eso el código pregunta: `if (error.name === 'AbortError')`.
 
----
 
 **¿Por qué es tan útil?**
 
@@ -754,7 +754,7 @@ Sin este código, si un usuario escribe muy rápido la palabra **"HOLA"**, se di
 3. `buscar?q=HOL`
 4. `buscar?q=HOLA`
 
-Si por un problema de red la petición de **"H"** tarda 5 segundos y la de **"HOLA"** tarda 1 segundo, el usuario vería primero los resultados de "HOLA" y, de repente, la pantalla cambiaría a los resultados de "H". **Con tu código, esto es imposible**, porque al dispararse la segunda, la primera muere.
+Si por un problema de red la petición de **"H"** tarda 5 segundos y la de **"HOLA"** tarda 1 segundo, el usuario vería primero los resultados de "HOLA" y, de repente, la pantalla cambiaría a los resultados de "H". **Con este código, esto es imposible**, porque al dispararse la segunda, la primera muere.
 
 
 ```javascript
