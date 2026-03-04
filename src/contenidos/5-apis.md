@@ -463,6 +463,16 @@ async function buscarPosts(userId) {
 }
 ```
 
+
+::: info **REST** **⚠️ IMPORTANTE - Atención a los datos que pasamos por la URL**
+En ocasiones los valores que enviamos a través de la URL pueden contener acentos, caracteres en blanco, etc. En estos casos hay que utilizar la función nativa de Javascript `encodeURIComponent()`:
+
+```javascript
+const nombreSeguro = encodeURIComponent(nombre);
+const url = `https://jsonplaceholder.typicode.com/posts?nombreUsuario=${nombreSeguro}`;
+```
+:::
+
 #### Ejemplo 3: Múltiples parámetros con URLSearchParams
 
 ```javascript
