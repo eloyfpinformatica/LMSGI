@@ -1082,27 +1082,111 @@ Aquí `filter` selecciona solo las películas cuyo título contiene el texto bus
 
 #### reduce() — Reducir a un valor
 
-```javascript
-// Puntuación promedio
-const total = peliculas.reduce((acc, p) => acc + p.puntuacion, 0);
-const promedio = total / peliculas.length;
-console.log(promedio); // 8.63...
+`reduce` es el más potente pero también el más difícil de entender al principio. La idea central es: **recorre el array y va acumulando un resultado**, elemento a elemento, hasta obtener un único valor final.
 
-// Agrupar por año
-const porAño = peliculas.reduce((grupos, pelicula) => {
-  const año = pelicula.año;
-  if (!grupos[año]) grupos[año] = [];
-  grupos[año].push(pelicula);
-  return grupos;
-}, {});
+Ese valor final puede ser cualquier cosa: un número, un string, un objeto, un array...
 
-// Construir un objeto de búsqueda rápida (índice por id)
-const indicePorId = peliculas.reduce((indice, p) => {
-  indice[p.id] = p;
-  return indice;
-}, {});
-console.log(indicePorId[2].titulo); // "Interstellar"
+La estructura básica es:
+
+```js
+const resultado = array.reduce((acumulador, elemento) => {
+    return /* nuevo valor del acumulador */;
+}, valorInicial);
 ```
+
+Los dos parámetros clave:
+- **`acumulador`**: el resultado que se va construyendo en cada iteración.
+- **`elemento`**: el elemento actual del array que se está procesando.
+- **`valorInicial`**: el valor con el que empieza el acumulador (después de la función).
+
+
+Antes de los ejemplos, es importante visualizar qué ocurre internamente. Con este array sencillo:
+
+```js
+const numeros = [1, 2, 3, 4];
+const suma = numeros.reduce((acumulador, elemento) => acumulador + elemento, 0);
+```
+
+Así evoluciona el acumulador en cada paso:
+
+| Iteración | Acumulador | Elemento | Resultado |
+|-----------|-----------|---------|-----------|
+| 1ª | 0 | 1 | 1 |
+| 2ª | 1 | 2 | 3 |
+| 3ª | 3 | 3 | 6 |
+| 4ª | 6 | 4 | **10** |
+
+El `0` es el valor inicial, y en cada paso el acumulador recibe el resultado anterior.
+
+
+##### Ejemplos
+
+**Sencillo — sumar valores de un array**
+
+```js
+const precios = [20, 45, 80, 15];
+
+const total = precios.reduce((acumulador, precio) => acumulador + precio, 0);
+
+console.log(total); // 160
+```
+
+
+**Intermedio — calcular el precio total de un carrito**
+
+```js
+const carrito = [
+    { producto: 'Camiseta',  precio: 20, cantidad: 2 },
+    { producto: 'Pantalón',  precio: 45, cantidad: 1 },
+    { producto: 'Zapatillas', precio: 80, cantidad: 1 }
+];
+
+const total = carrito.reduce((acumulador, item) => {
+    return acumulador + (item.precio * item.cantidad);
+}, 0);
+
+console.log(total); // 165
+```
+
+En cada iteración multiplica precio por cantidad y lo suma al acumulador.
+
+
+**Avanzado — agrupar películas por década**
+
+Aquí el acumulador ya no es un número sino un objeto, y vamos construyéndolo poco a poco:
+
+```js
+const peliculas = [
+    { titulo: "Alien",        año: 1979 },
+    { titulo: "Blade Runner", año: 1982 },
+    { titulo: "Inception",    año: 2010 },
+    { titulo: "The Prestige", año: 2006 },
+    { titulo: "Interstellar", año: 2014 }
+];
+
+const porDecada = peliculas.reduce((acumulador, pelicula) => {
+    const decada = Math.floor(pelicula.año / 10) * 10 + 's';
+
+    if (!acumulador[decada]) {
+        acumulador[decada] = [];
+    }
+
+    acumulador[decada].push(pelicula.titulo);
+    return acumulador;
+}, {});
+
+console.log(porDecada);
+// {
+//   '1970s': ['Alien'],
+//   '1980s': ['Blade Runner'],
+//   '2000s': ['The Prestige'],
+//   '2010s': ['Inception', 'Interstellar']
+// }
+```
+
+El acumulador empieza como un objeto vacío `{}`, y en cada iteración comprueba si ya existe la clave de esa década. Si no existe, la crea con un array vacío, y luego añade el título.
+
+
 
 #### Encadenar métodos
 
