@@ -902,7 +902,7 @@ Dos características clave a recordar:
 - Siempre devuelve un array **del mismo tamaño** que el original.
 - Si no devuelves nada en la función, obtienes un array lleno de `undefined`. Siempre hay que retornar algo.
 
----
+
 
 ##### Ejemplos
 
@@ -916,7 +916,7 @@ const preciosConIva = precios.map(precio => precio * 1.21);
 console.log(preciosConIva); // [12.1, 24.2, 36.3, 48.4]
 ```
 
----
+
 
 **Intermedio — extraer propiedades de objetos**
 
@@ -934,7 +934,25 @@ const nombres = usuarios.map(usuario => usuario.nombre);
 console.log(nombres); // ['Ana', 'Carlos', 'Lucía']
 ```
 
----
+```javascript
+const peliculas = [
+  { id: 1, titulo: "Inception",     año: 2010, puntuacion: 8.8 },
+  { id: 2, titulo: "Interstellar",  año: 2014, puntuacion: 8.6 },
+  { id: 3, titulo: "The Prestige",  año: 2006, puntuacion: 8.5 }
+];
+
+// Extraer solo los títulos
+const titulos = peliculas.map(p => p.titulo);
+// ["Inception", "Interstellar", "The Prestige"]
+
+// Crear una nueva estructura
+const resumen = peliculas.map(p => ({
+  nombre: p.titulo,
+  info: `${p.año} · ⭐${p.puntuacion}`
+}));
+// [{ nombre: "Inception", info: "2010 · ⭐8.8" }, ...]
+```
+
 
 **Avanzado — adaptar respuesta de una API para el DOM**
 
@@ -964,6 +982,60 @@ Aquí `map` convierte cada objeto de la API en un string HTML, y luego `join('')
 
 #### filter() — Filtrar elementos
 
+## 1. ¿Qué es filter?
+
+`filter` es un método de los arrays que **recorre cada elemento y devuelve un nuevo array solo con los elementos que cumplen una condición**. Al igual que `map`, el array original no se modifica.
+
+La estructura básica es:
+
+```js
+const nuevoArray = array.filter(elemento => condición);
+```
+
+La función que le pasas debe devolver `true` o `false`. Si devuelve `true`, el elemento se incluye en el nuevo array; si devuelve `false`, se descarta.
+
+Sus principales usos son filtrar listas según criterios del usuario (búsquedas, categorías), eliminar elementos no válidos o nulos de un array, y combinarlos con `map` para primero filtrar y luego transformar.
+
+Dos características clave a recordar:
+- El array resultante puede tener **menos elementos** que el original, o incluso estar vacío.
+- A diferencia de `map`, no transforma los elementos, solo decide si los incluye o no.
+
+
+
+##### Ejemplos
+
+**Sencillo — filtrar números**
+
+```js
+const numeros = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+
+const pares = numeros.filter(numero => numero % 2 === 0);
+
+console.log(pares); // [2, 4, 6, 8, 10]
+```
+
+
+**Intermedio — filtrar objetos por propiedad**
+
+Tienes un catálogo de productos y el usuario solo quiere ver los que están en stock:
+
+```js
+const productos = [
+    { nombre: 'Camiseta', precio: 20, enStock: true },
+    { nombre: 'Pantalón', precio: 45, enStock: false },
+    { nombre: 'Zapatillas', precio: 80, enStock: true },
+    { nombre: 'Gorra', precio: 15, enStock: false }
+];
+
+const disponibles = productos.filter(producto => producto.enStock);
+
+console.log(disponibles);
+// [
+//   { nombre: 'Camiseta', precio: 20, enStock: true },
+//   { nombre: 'Zapatillas', precio: 80, enStock: true }
+// ]
+```
+
 ```javascript
 // Películas con puntuación >= 8.7
 const peliculasTop = peliculas.filter(p => p.puntuacion >= 8.7);
@@ -976,6 +1048,37 @@ const topRecientes = peliculas
   .filter(p => p.año > 2010)
   .filter(p => p.puntuacion > 8.5);
 ```
+
+
+
+**Avanzado — buscador en tiempo real combinando filter y map**
+
+El usuario escribe en un input y la lista se filtra y renderiza dinámicamente:
+
+```js
+const peliculas = [
+    { titulo: "Inception",    año: 2010, puntuacion: 8.8 },
+    { titulo: "Interstellar", año: 2014, puntuacion: 8.6 },
+    { titulo: "The Prestige", año: 2006, puntuacion: 8.5 },
+    { titulo: "Dunkirk",      año: 2017, puntuacion: 7.9 }
+];
+
+function renderPeliculas(termino) {
+    const resultado = peliculas
+        .filter(p => p.titulo.toLowerCase().includes(termino.toLowerCase()))
+        .map(p => `<li>${p.titulo} (${p.año}) — ⭐ ${p.puntuacion}</li>`);
+
+    document.getElementById('lista').innerHTML = resultado.length
+        ? resultado.join('')
+        : '<li>No se encontraron resultados</li>';
+}
+
+document.getElementById('buscador').addEventListener('input', e => {
+    renderPeliculas(e.target.value);
+});
+```
+
+Aquí `filter` selecciona solo las películas cuyo título contiene el texto buscado, y `map` convierte cada una en un elemento `<li>` listo para el DOM. Es el patrón más habitual en buscadores reales.
 
 #### reduce() — Reducir a un valor
 
