@@ -888,24 +888,79 @@ console.log(resto);    // ["The Prestige", "Dunkirk"]
 
 #### map() — Transformar cada elemento
 
-```javascript
-const peliculas = [
-  { id: 1, titulo: "Inception",     año: 2010, puntuacion: 8.8 },
-  { id: 2, titulo: "Interstellar",  año: 2014, puntuacion: 8.6 },
-  { id: 3, titulo: "The Prestige",  año: 2006, puntuacion: 8.5 }
+`map` es un método de los arrays que **recorre cada elemento y devuelve un nuevo array** con el resultado de aplicar una función a cada uno. El array original no se modifica nunca.
+
+La estructura básica es:
+
+```js
+const nuevoArray = array.map(elemento => transformación);
+```
+
+Sus principales usos son transformar datos (cambiar la forma o el valor de cada elemento), extraer una propiedad concreta de un array de objetos, y preparar datos para mostrarlos en el DOM o adaptarlos a otro formato.
+
+Dos características clave a recordar:
+- Siempre devuelve un array **del mismo tamaño** que el original.
+- Si no devuelves nada en la función, obtienes un array lleno de `undefined`. Siempre hay que retornar algo.
+
+---
+
+##### Ejemplos
+
+**Sencillo — transformar valores numéricos**
+
+```js
+const precios = [10, 20, 30, 40];
+
+const preciosConIva = precios.map(precio => precio * 1.21);
+
+console.log(preciosConIva); // [12.1, 24.2, 36.3, 48.4]
+```
+
+---
+
+**Intermedio — extraer propiedades de objetos**
+
+Tienes un array de usuarios y solo necesitas sus nombres para mostrarlos en una lista:
+
+```js
+const usuarios = [
+    { id: 1, nombre: 'Ana', email: 'ana@email.com' },
+    { id: 2, nombre: 'Carlos', email: 'carlos@email.com' },
+    { id: 3, nombre: 'Lucía', email: 'lucia@email.com' }
 ];
 
-// Extraer solo los títulos
-const titulos = peliculas.map(p => p.titulo);
-// ["Inception", "Interstellar", "The Prestige"]
+const nombres = usuarios.map(usuario => usuario.nombre);
 
-// Crear una nueva estructura
-const resumen = peliculas.map(p => ({
-  nombre: p.titulo,
-  info: `${p.año} · ⭐${p.puntuacion}`
-}));
-// [{ nombre: "Inception", info: "2010 · ⭐8.8" }, ...]
+console.log(nombres); // ['Ana', 'Carlos', 'Lucía']
 ```
+
+---
+
+**Avanzado — adaptar respuesta de una API para el DOM**
+
+Recibes datos de una API de películas y necesitas transformarlos en tarjetas HTML listas para insertar en la página:
+
+```js
+const peliculas = [
+    { title: "Inception",    poster_path: "/abc.jpg", vote_average: 8.8 },
+    { title: "Interstellar", poster_path: "/def.jpg", vote_average: 8.6 },
+    { title: "The Prestige", poster_path: "/ghi.jpg", vote_average: 8.5 }
+];
+
+const BASE_IMG = 'https://image.tmdb.org/t/p/w500';
+
+const tarjetas = peliculas.map(pelicula => `
+    <div class="card">
+        <img src="${BASE_IMG}${pelicula.poster_path}" alt="${pelicula.title}">
+        <h3>${pelicula.title}</h3>
+        <p>⭐ ${pelicula.vote_average}</p>
+    </div>
+`);
+
+document.getElementById('contenedor').innerHTML = tarjetas.join('');
+```
+
+Aquí `map` convierte cada objeto de la API en un string HTML, y luego `join('')` une todo el array en un único string para insertarlo en el DOM de una sola vez.
 
 #### filter() — Filtrar elementos
 
