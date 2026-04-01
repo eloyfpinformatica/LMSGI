@@ -982,8 +982,6 @@ Aquí `map` convierte cada objeto de la API en un string HTML, y luego `join('')
 
 #### filter() — Filtrar elementos
 
-## 1. ¿Qué es filter?
-
 `filter` es un método de los arrays que **recorre cada elemento y devuelve un nuevo array solo con los elementos que cumplen una condición**. Al igual que `map`, el array original no se modifica.
 
 La estructura básica es:
