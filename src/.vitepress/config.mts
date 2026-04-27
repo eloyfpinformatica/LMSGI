@@ -35,6 +35,7 @@ export default defineConfig({
               { text: '3. Manipulación de objectos con JavaScript', link: '/contenidos/3-javascript' },
               { text: '4. Validación de documentos JSON y XML', link: '/contenidos/4-validacion' },
               { text: '5. Intercambio de información mediante APIs', link: '/contenidos/5-apis' },
+              { text: '6. Almacenamiento y formatos de intercambio de datos.', link: '/contenidos/6-bases_datos' },
 
             ]
           },
@@ -59,6 +60,7 @@ export default defineConfig({
             { text: '3. Manipulación de objectos con JavaScript', link: '/contenidos/3-javascript' },
             { text: '4. Validación de documentos JSON y XML', link: '/contenidos/4-validacion' },
             { text: '5. Intercambio de información mediante APIs', link: '/contenidos/5-apis' },
+            { text: '6. Almacenamiento y formatos de intercambio de datos.', link: '/contenidos/6-bases_datos' },
           ]
         },
         /* {
