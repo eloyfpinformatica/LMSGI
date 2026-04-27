@@ -47,7 +47,6 @@ Para superar esta unidad, evaluaremos si:
 5. **Proyecto Final: GameVault**
    - Integración de SQLite y MongoDB.
 
-------
 
 > 💡 **Nota para el alumno:** A lo largo de esta unidad, recordad que aunque cambie la forma de guardar los datos, vuestro conocimiento de **JSON** y **fetch** sigue siendo la pieza clave. Solo vamos a cambiar el "almacén" para que vuestras aplicaciones sean mucho más potentes.
 
@@ -123,10 +122,8 @@ JSON
 
 *Aunque la base de datos mida 10GB, encontrar el `id: 1` es casi instantáneo gracias a que el sistema sabe exactamente en qué "página" está.*
 
-¡Manos a la obra! En esta sesión vamos a dejar la teoría a un lado y vamos a "ensuciarnos las manos" creando nuestra primera base de datos real. Nada de instalaciones pesadas: usaremos una herramienta ligera y potente.
 
 ## 2. SQLite y DB Browser: crear la BD
-
 
 
 ### 2.1. La herramienta: ¿Por qué SQLite?
@@ -402,7 +399,6 @@ No vamos a instalar nada. Vamos a usar **MongoDB Atlas**, que es la versión "Cl
 3. **Database Name:** `TiendaVideojuegos`
 4. **Collection Name:** `Catalogo`
 
-------
 
 ### 4.4. Insertar y Consultar desde la interfaz
 
