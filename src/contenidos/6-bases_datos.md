@@ -1,6 +1,6 @@
-# Unidad Didáctica 6: Almacenamiento y Formatos de Intercambio de Datos
+# Unidad 6: Almacenamiento y formatos de intercambio de datos
 
-## Resultado de Aprendizaje
+## Resultado de aprendizaje
 
 **RA6: Gestiona la información en formatos de intercambio de datos analizando y utilizando tecnologías de almacenamiento y lenguajes de consulta.**
 
@@ -18,7 +18,7 @@ Para superar esta unidad, evaluaremos si:
 - **h)** Se han identificado las características de los sistemas gestores de bases de datos nativas (NoSQL).
 - **i)** Se han utilizado herramientas para gestionar la información en bases de datos nativas.
 
-## Temporalización y Estructura (6 horas)
+## Temporalización y estructura (6 horas)
 
 | **Sesión**   | **Título**                                                   | **Duración** | **Criterios** |
 | ------------ | ------------------------------------------------------------ | ------------ | ------------- |
@@ -28,7 +28,7 @@ Para superar esta unidad, evaluaremos si:
 | **Sesión 4** | Bases de Datos Documentales: El mundo de MongoDB Atlas       | 1h           | h, i          |
 | **Sesión 5** | Proyecto Final: GameVault                                    | 1h           | Todos         |
 
-## Índice de Contenidos
+## Índice de contenidos
 
 1. **Introducción: El salto al mundo profesional**
    - De `db.json` a un Sistema Gestor de Base de Datos.
