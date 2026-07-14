@@ -7,14 +7,23 @@ Unidad 1. Introducción a los lenguajes de marcas
 RA1. Reconoce las características de lenguajes de marcas analizando e interpretando fragmentos de código.
 
 **Criterios de evaluación asociados**:
+
 a) Se han identificado las características generales de los lenguajes de marcas.
+
 b) Se han reconocido las ventajas que proporcionan en el tratamiento de la información.
+
 c) Se han clasificado los lenguajes de marcas e identificado los más relevantes.
+
 d) Se han diferenciado sus ámbitos de aplicación.
+
 e) Se han reconocido la necesidad y los ámbitos específicos de aplicación de un lenguaje de marcas de propósito general.
+
 f) Se han analizado las características propias de diferentes lenguajes de marcas.
+
 g) Se ha identificado la estructura de un documento y sus reglas sintácticas.
+
 h) Se ha contrastado la necesidad de crear documentos bien formados y la influencia en su procesamiento.
+
 i) Se han identificado las ventajas que aportan los espacios de nombres.
 
 ---
@@ -149,7 +158,7 @@ Actividad: Analiza fragmentos de código y rellena la siguiente tabla.
 | Fragmento de código                                           | ¿Qué lenguaje es? | ¿Qué representa? | ¿Qué ventajas ves? | ¿Dónde lo usarías? |
 | ------------------------------------------------------------- | ----------------- | ---------------- | ------------------ | ------------------ |
 | &lt;title&gt;Batman&lt;/title&gt;                             |                   |                  |                    |                    |
-| { "autor": "Orwell" }                                         |                   |                  |                    |                    |
+| /{ "autor": "Orwell" /}                                       |                   |                  |                    |                    |
 | &lt;alumno&gt;&lt;nombre&gt;Ana&lt;/nombre&gt;&lt;/alumno&gt; |                   |                  |                    |                    |
 
 :::
@@ -182,7 +191,7 @@ En este módulo, aprenderás ambos:
 - XML para comprender su estructura, validación y presencia en contextos formales.
 - JSON para trabajar con APIs, aplicaciones web y manipulación de datos en JavaScript.
 
-## Estructura y sintaxis de HTML, JSON y XML
+## 3. Estructura y sintaxis de HTML, JSON y XML
 
 ### Anatomía de un documento HTML5
 
@@ -320,7 +329,7 @@ Ambas son sintácticamente válidas. La diferencia está en lo semántico.
 </plataforma>
 ```
 
-### Actividad en parejas: Análisis de fragmentos
+::: info ✏️ **Para practicar:**
 
 En parejas, lee los siguientes tres fragmentos.
 
@@ -360,6 +369,8 @@ Fragmento 3 – XML
   <cantidad>2</cantidad>
 </pedido>
 ```
+
+:::
 
 ## 4. El propósito de cada lenguaje
 
@@ -470,8 +481,6 @@ Errores:
 </persona>
 ```
 
-—
-
 Ejemplo de JSON bien vs mal formado
 
 ❌ Mal formado:
@@ -498,8 +507,6 @@ Errores:
 }
 ```
 
-—
-
 ¿Por qué es tan importante?
 
 Los lenguajes de marcas suelen ser procesados por máquinas.  
@@ -514,9 +521,7 @@ Una etiqueta mal cerrada puede romper toda la página.
 📌 En una factura electrónica:  
 Un XML mal formado la invalida para su envío o firma.
 
-—
-
-Actividad práctica (por parejas o grupos)
+::: info ✏️ **Para practicar:**
 
 Detectar y corregir errores en fragmentos de XML y JSON.
 
@@ -547,6 +552,8 @@ Detectar y corregir errores en fragmentos de XML y JSON.
 </curso>
 ```
 
+:::
+
 ## 6. Ampliación - Introducción a los nombres de espacio (namespaces) en XML
 
 ### ¿Qué son los nombres de espacio en XML?
@@ -559,8 +566,6 @@ Por ejemplo, imagina que tienes dos vocabularios XML diferentes: uno para datos 
 
 Un namespace se define asociando un **prefijo** con una **URI** (Identificador Uniforme de Recursos, que actúa como un identificador único, no tiene que ser una URL real). Luego se usan esos prefijos para calificar las etiquetas.
 
----
-
 ### Ejemplo simple sin namespace (problema):
 
 ```xml
@@ -571,8 +576,6 @@ Un namespace se define asociando un **prefijo** con una **URI** (Identificador U
 ```
 
 Aquí hay dos `<titulo>`, pero no sabemos cuál es cuál.
-
----
 
 ### Ejemplo con namespaces (solución):
 
@@ -587,15 +590,11 @@ Aquí hay dos `<titulo>`, pero no sabemos cuál es cuál.
 - `xmlns:tecn="..."` define otro espacio con prefijo `tecn`.
 - Cada etiqueta `<info:titulo>` y `<tecn:titulo>` pertenece a un espacio distinto.
 
----
-
 ### Ventajas
 
 - Evita ambigüedades al combinar vocabularios o esquemas diferentes.
 - Permite que un documento sea extensible y interoperable.
 - Es fundamental en estándares XML complejos (SOAP, XHTML, SVG, etc.).
-
----
 
 ### ¿Cuándo usar namespaces?
 
@@ -603,14 +602,10 @@ Aquí hay dos `<titulo>`, pero no sabemos cuál es cuál.
 - Cuando necesitas evitar colisiones en nombres de etiquetas.
 - En documentos simples, no siempre es obligatorio, pero es buena práctica conocerlo.
 
----
-
 ### ¿Cómo se declara un namespace?
 
 - Se declara en la etiqueta raíz (o en cualquier etiqueta) con `xmlns:prefijo="URI"`
 - Luego se usa el prefijo para calificar las etiquetas que pertenecen a ese espacio.
-
----
 
 ### Ejemplo extendido de un fragmento con namespace:
 
@@ -623,11 +618,7 @@ Aquí hay dos `<titulo>`, pero no sabemos cuál es cuál.
 </peliculas>
 ```
 
----
-
 https://es.wikipedia.org/wiki/Espacio_de_nombres_XML
-
-&nbsp;
 
 &nbsp;
 
@@ -654,8 +645,6 @@ https://es.wikipedia.org/wiki/Espacio_de_nombres_XML
 </rss>
 ```
 
----
-
 ### JSON en APIs y Open Data
 
 **Contenido teórico:**
@@ -678,8 +667,6 @@ curl -s https://api.ejemplo.com/peliculas/123 | jq .
 }
 ```
 
----
-
 ### HTML como base de páginas web
 
 **Contenido teórico:**
@@ -700,8 +687,6 @@ curl -s https://api.ejemplo.com/peliculas/123 | jq .
   </nav>
 </header>
 ```
-
----
 
 ::: info ✏️ **Para practicar:**
 Actividad: Exploración guiada
@@ -795,5 +780,3 @@ Actividad: Exploración guiada
     ```
 
 &nbsp;
-
-- -
